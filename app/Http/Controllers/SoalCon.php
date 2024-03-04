@@ -8,7 +8,7 @@ use Session;
 
 class SoalCon extends Controller
 {
-    public function index ()
+    public function index()
     {
         $soal = DB::table("soal")->get();
         return view("soal", ['soal' => $soal]);
@@ -18,18 +18,18 @@ class SoalCon extends Controller
 
         DB::table('soal')->insert([
             'judulmateri' => $request->judulmateri,
-            'deskripsisoal'=> $request->deskripsrisoal,
-            'bataswaktu' => $request->bataswaktu,
+            'deskripsisoal' => $request->deskripsisoal,
+            'bataswaktu' => $request->bataswaktu
         ]);
-        Session::flash('message','Input Berhasil');
+        Session::flash('message', 'Input Berhasil');
         return redirect('/soal');
     }
     public function storeupdate(Request $request)
     {
         DB::table('soal')->where('idsoal', $request->idsoal)->update([
-            'judulmateri'=> $request->judulmateri,
-            'deskripsisoal'=> $request->deskripsrisoal,
-            'bataswaktu'=> $request->bataswaktu
+            'judulmateri' => $request->judulmateri,
+            'deskripsisoal' => $request->deskripsisoal,
+            'bataswaktu' => $request->bataswaktu
         ]);
         return redirect('/soal');
     }
